@@ -3,11 +3,16 @@ module github.com/scrouthtv/go-player
 go 1.17
 
 require (
-	github.com/faiface/beep v1.1.0 // indirect
+	github.com/faiface/beep v1.1.0
+	github.com/godbus/dbus/v5 v5.0.6
+	github.com/leberKleber/go-mpris v0.0.0-20210214234645-86a25ad89ca0
+	github.com/mattn/go-runewidth v0.0.13
+	github.com/nsf/termbox-go v1.1.1
+)
+
+require (
 	github.com/hajimehoshi/go-mp3 v0.3.0 // indirect
 	github.com/hajimehoshi/oto v0.7.1 // indirect
-	github.com/mattn/go-runewidth v0.0.13 // indirect
-	github.com/nsf/termbox-go v1.1.1 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/rivo/uniseg v0.2.0 // indirect
 	golang.org/x/exp v0.0.0-20190306152737-a1d7652674e8 // indirect
