@@ -23,7 +23,7 @@ func (g *Gui) Redraw(p *Player) {
 
 	for i, s := range p.S {
 		col := termbox.ColorDefault
-		if i == p.Active {
+		if i == p.Active && p.R.Playing() {
 			col |= termbox.AttrReverse
 		}
 
@@ -62,13 +62,15 @@ func (g *Gui) Loop(p *Player) {
 					g.pos--
 				}
 			} else if ev.Key == termbox.KeySpace || ev.Key == termbox.KeyEnter {
-				p.Active = g.pos
-				p.R.Stop()
-				err := p.R.Play(&p.S[p.Active])
-				if err != nil {
-					g.status = err.Error()
+				if g.pos == p.Active && p.R.Playing() {
+					p.R.Stop()
 				} else {
-					g.status = "ok."
+					err := p.Play(g.pos)
+					if err != nil {
+						g.status = err.Error()
+					} else {
+						g.status = "ok."
+					}
 				}
 			}
 		}

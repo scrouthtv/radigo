@@ -55,6 +55,10 @@ func (b *PlayerBeep) Close() {
 	// speaker.Close() // not needed?
 }
 
+func (b *PlayerBeep) Playing() bool {
+	return b.play
+}
+
 func (b *PlayerBeep) Err() error {
 	return nil
 }

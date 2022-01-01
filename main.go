@@ -20,6 +20,12 @@ type Player struct {
 	R Renderer
 }
 
+func (p *Player) Play(station int) error {
+	p.Active = station
+	p.R.Stop()
+	return p.R.Play(&p.S[station])
+}
+
 func (p *Player) Exit(code int) {
 	p.R.Stop()
 	p.G.Close()
@@ -29,6 +35,7 @@ func (p *Player) Exit(code int) {
 type Renderer interface {
 	Open()
 	Play(*Station) error
+	Playing() bool
 	Stop()
 	Close()
 }
